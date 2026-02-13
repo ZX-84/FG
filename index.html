@@ -20,15 +20,26 @@
 <body>
 
 <script>
-const motDePasse = "Tipitou974!"; // 🔑 change ton mot de passe ici
+const motDePasse = "FG2026"; // 🔑 change ton mot de passe ici
 
 let saisie = prompt("Entre le mot de passe :");
 
 if (saisie !== motDePasse) {
-    // 🔁 Redirection vers Google si mauvais mot de passe
-    window.location.href = "https://www.google.com";
+
+    // ❌ Message affiché
+    document.body.innerHTML = `
+        <h1>Le site est bloqué par votre administrateur.</h1>
+        <p>Accès non autorisé. Redirection...</p>
+    `;
+
+    // 🔁 Redirection après 2 secondes
+    setTimeout(function() {
+        window.location.href = "https://www.google.com";
+    }, 2000);
+
 } else {
-    // ✅ Affichage du site si bon mot de passe
+
+    // ✅ Accès autorisé
     document.body.innerHTML = `
         <h1>Bienvenue sur FG Games 🎮</h1>
         <p>Site pour mes amis 😎</p>
