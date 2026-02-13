@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Page d'accueil - Espace Élèves</title>
+    <title>FG Games</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,56 +30,58 @@
 <h1>Bienvenue sur FG Games 🎮</h1>
 <p>Site pour mes amis 😎</p>
 
+<!-- Login -->
 <div id="loginDiv">
     <input type="password" id="mdpInput" placeholder="Entre le mot de passe">
     <button onclick="verifierMDP()">Valider</button>
 </div>
 
+<!-- Contenu caché au départ -->
 <div id="content" style="display:none;">
     <button onclick="window.open('https://bloxd.io/game/bedwars_4v4v4v4', '_blank')">
         Bedwars
     </button>
-
     <button onclick="window.open('https://rocketgoal.io/', '_blank')">
         Rocket League
     </button>
 
-    <div id="imageContainer"></div> <!-- Conteneur pour l'image -->
+    <!-- Conteneur pour l'image -->
+    <div id="imageContainer"></div>
 </div>
 
 <script>
 const motDePasse = "Tipitou974!";
 
+// Fonction de vérification du mot de passe
 function verifierMDP() {
     const saisie = document.getElementById("mdpInput").value;
 
     if(saisie === motDePasse){
-        // Cache le login
+        // Masquer login, afficher contenu
         document.getElementById("loginDiv").style.display = "none";
-        // Montre le contenu
         document.getElementById("content").style.display = "block";
-
-        // 🔹 Détecter la touche Entrée pour l'image
-        document.addEventListener("keydown", function(event) {
-            if(event.key === "Enter") {
-                const container = document.getElementById("imageContainer");
-
-                // Vérifie si l'image existe déjà
-                if (!document.getElementById("surprise")) {
-                    const img = document.createElement("img");
-                    img.src = "surprise.png"; // ton image
-                    img.id = "surprise";
-                    img.alt = "Surprise !";
-                    container.appendChild(img);
-                }
-            }
-        });
-
     } else {
         alert("Mauvais mot de passe ! Le site est bloqué.");
         window.location.href = "https://www.google.com";
     }
 }
+
+// 🔹 Détecter Entrée pour l'image
+document.addEventListener("keydown", function(event) {
+    if(event.key === "Enter") {
+        const contentDiv = document.getElementById("content");
+        const container = document.getElementById("imageContainer");
+
+        // On ne montre l'image que si le contenu est visible
+        if(contentDiv.style.display === "block" && !document.getElementById("surprise")) {
+            const img = document.createElement("img");
+            img.src = "surprise.png"; // ton image dans le repo
+            img.id = "surprise";
+            img.alt = "Surprise !";
+            container.appendChild(img);
+        }
+    }
+});
 </script>
 
 <!-- 🔹 Tawk.to Chat -->
@@ -97,4 +99,3 @@ s0.parentNode.insertBefore(s1,s0);
 
 </body>
 </html>
-
