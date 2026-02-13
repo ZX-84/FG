@@ -15,9 +15,15 @@
             margin: 20px;
             cursor: pointer;
         }
+        #imageContainer img {
+            width: 200px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
+
+<div id="imageContainer"></div> <!-- Conteneur pour l'image -->
 
 <script>
 // 🔐 Mot de passe
@@ -26,19 +32,16 @@ const motDePasse = "Tipitou974!";
 let saisie = prompt("Entre le mot de passe :");
 
 if (saisie !== motDePasse) {
-
     // ❌ Mauvais mot de passe
     document.body.innerHTML = `
         <h1>Le site est bloqué par votre administrateur.</h1>
         <p>Accès non autorisé. Redirection...</p>
     `;
-
     setTimeout(function() {
         window.location.href = "https://www.google.com";
     }, 2000);
 
 } else {
-
     // ✅ Bon mot de passe
     document.body.innerHTML = `
         <h1>Bienvenue sur FG Games 🎮</h1>
@@ -51,27 +54,23 @@ if (saisie !== motDePasse) {
         <button onclick="window.open('https://rocketgoal.io/', '_blank')">
             Rocket League
         </button>
-        // Détecter la touche Entrée
-document.addEventListener("keydown", function(event) {
-    if(event.key === "Enter") {
-        const container = document.getElementById("imageContainer");
-
-        // Vérifie si l'image existe déjà
-        if (!document.getElementById("surprise")) {
-            const img = document.createElement("img");
-            img.src = "surprise.png"; // <-- ton image du repo
-            img.id = "surprise";
-            img.alt = "Surprise !";
-            img.style.width = "200px"; // taille de l'image
-            container.appendChild(img);
-        }
-    }
-});
-
-    
-});
-
     `;
+
+    // 🔹 Détecter la touche Entrée
+    document.addEventListener("keydown", function(event) {
+        if(event.key === "Enter") {
+            const container = document.getElementById("imageContainer");
+
+            // Vérifie si l'image existe déjà
+            if (!document.getElementById("surprise")) {
+                const img = document.createElement("img");
+                img.src = "surprise.png"; // <-- ton image dans le repo
+                img.id = "surprise";
+                img.alt = "Surprise !";
+                container.appendChild(img);
+            }
+        }
+    });
 }
 </script>
 
