@@ -20,12 +20,14 @@
 <body>
 
 <script>
+// 🔐 Mot de passe
 const motDePasse = "Tipitou974!"; 
 
 let saisie = prompt("Entre le mot de passe :");
 
 if (saisie !== motDePasse) {
 
+    // ❌ Mauvais mot de passe
     document.body.innerHTML = `
         <h1>Le site est bloqué par votre administrateur.</h1>
         <p>Accès non autorisé. Redirection...</p>
@@ -37,6 +39,7 @@ if (saisie !== motDePasse) {
 
 } else {
 
+    // ✅ Bon mot de passe
     document.body.innerHTML = `
         <h1>Bienvenue sur FG Games 🎮</h1>
         <p>Site pour mes amis 😎</p>
@@ -50,6 +53,19 @@ if (saisie !== motDePasse) {
         </button>
     `;
 }
+</script>
+
+<!-- 🔹 Tawk.to Chat -->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/698f163385e35c1c3911e648/1jhbetes8';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
 </script>
 
 </body>
