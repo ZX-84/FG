@@ -73,40 +73,39 @@ function verifierMDP() {
         document.getElementById("loginDiv").style.display = "none";
         document.getElementById("content").style.display = "block";
 
-        // ✅ Charger Chatango seulement après mot de passe
+        // ✅ Charger le nouveau Chatango seulement après mot de passe
         var script = document.createElement("script");
-        script.id = "cid0020000432053739753";
+        script.id = "cid0020000432055617108";
         script.async = true;
         script.src = "//st.chatango.com/js/gz/emb.js";
         script.setAttribute("data-cfasync","false");
-        script.style.width = "180px";
-        script.style.height = "328px";
-        script.innerHTML = '{"handle":"freegames974","arch":"js","styles":{"a":"CC0000","b":100,"c":"FFFFFF","d":"FFFFFF","k":"CC0000","l":"CC0000","m":"CC0000","n":"FFFFFF","p":"10","q":"CC0000","r":100,"pos":"br","cv":1,"cvbg":"CC0000","cvw":59,"cvh":25,"fwtickm":1}}';
+        script.style.width = "200px";
+        script.style.height = "300px";
+        script.innerHTML = '{"handle":"freegameschat974","arch":"js","styles":{"a":"404040","b":58,"c":"FFFFFF","d":"FFFFFF","f":58,"i":58,"k":"404040","l":"404040","m":"404040","n":"FFFFFF","o":58,"p":"10","q":"404040","r":58,"pos":"br","cv":1,"cvbg":"404040","cvbga":58,"cvw":58,"cvh":18}}';
 
         document.getElementById("chatContainer").appendChild(script);
 
     } else {
 
-    // Créer le message si il n'existe pas déjà
-    let message = document.getElementById("errorMessage");
+        // Afficher message rouge avant redirection
+        let message = document.getElementById("errorMessage");
 
-    if(!message){
-        message = document.createElement("h4");
-        message.id = "errorMessage";
-        message.style.color = "red";
-        message.style.fontSize = "50px";
-        message.style.marginTop = "20px";
-        document.getElementById("loginDiv").appendChild(message);
+        if(!message){
+            message = document.createElement("h4");
+            message.id = "errorMessage";
+            message.style.color = "red";
+            message.style.fontSize = "50px";
+            message.style.marginTop = "20px";
+            document.getElementById("loginDiv").appendChild(message);
+        }
+
+        message.textContent = "Vous n'êtes pas autorisé à utiliser ce site. Nous allons en informer votre administrateur. Redirection...";
+
+        // Attendre 2 secondes puis rediriger
+        setTimeout(function() {
+            window.location.href = "https://www.google.com";
+        }, 2000);
     }
-
-    message.textContent = "Vous n'êtes pas autorisé à utiliser ce site. Nous allons en informer votre administrateur. Redirection...";
-
-    // Attendre 2 secondes puis rediriger
-    setTimeout(function() {
-        window.location.href = "https://www.google.com";
-    }, 2000);
-}
-
 }
 
 // Image plein écran avec Entrée
