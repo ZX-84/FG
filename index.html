@@ -20,28 +20,37 @@
             font-size: 16px;
         }
 
-        /* Style pour l'image plein écran */
+        /* Image plein écran */
         #fullImage {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            object-fit: contain; 
+            object-fit: contain;
             background-color: rgba(0,0,0,0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
             z-index: 9999;
         }
     </style>
 
-    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="73610771-4550-49a1-aea4-26e8c6e4abcf";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+    <!-- Chat Crisp -->
+    <script type="text/javascript">
+    window.$crisp=[];
+    window.CRISP_WEBSITE_ID="73610771-4550-49a1-aea4-26e8c6e4abcf";
+    (function(){
+        d=document;
+        s=d.createElement("script");
+        s.src="https://client.crisp.chat/l.js";
+        s.async=1;
+        d.getElementsByTagName("head")[0].appendChild(s);
+    })();
+    </script>
+
 </head>
 <body>
 
-<h1>Bienvenue sur FG Games 🎮</h1>
-<p>Site pour mes amis 😎</p>
+<h1>Bienvenue sur FG</h1>
+<p>Site pour les potes</p>
 
 <div id="loginDiv">
     <input type="password" id="mdpInput" placeholder="Entre le mot de passe">
@@ -49,37 +58,16 @@
 </div>
 
 <div id="content" style="display:none;">
-    <button onclick="window.open('https://bloxd.io/game/bedwars_4v4v4v4', '_blank')">
-        Bedwars
-    </button>
-    <button onclick="window.open('https://rocketgoal.io/', '_blank')">
-        Rocket League
-    </button>
- <button onclick="window.open('https://slither.io//', '_blank')">
-        slither.io
-    </button>    
- <button onclick="window.open('https://diep.io//', '_blank')">
-        diep.io
-    </button>     
-<button onclick="window.open('https://curvefever.pro///', '_blank')">
-        Curve Fever Pro
-    </button>  
-    <button onclick="window.open('https://play2048.co///', '_blank')">
-        2048
-    </button>
-     <button onclick="window.open('https://enzo974power.github.io/fg///', '_blank')">
-        espace de Enzo
-    </button>
-   <button onclick="window.open('https://poxel.io///', '_blank')">
-        poxel.io
-    </button>  
- <button onclick="window.open('https://shellshock.io//', '_blank')">
-       shell shocker
-    </button>      
-<button onclick="window.open('https://slopegame.io/geometry-dash/', '_blank')">
-       Geometry dash
-    </button>   
-    
+    <button onclick="window.open('https://bloxd.io/game/bedwars_4v4v4v4', '_blank')">Bedwars</button>
+    <button onclick="window.open('https://rocketgoal.io/', '_blank')">Rocket League</button>
+    <button onclick="window.open('https://slither.io/', '_blank')">Slither.io</button>
+    <button onclick="window.open('https://diep.io/', '_blank')">Diep.io</button>
+    <button onclick="window.open('https://curvefever.pro/', '_blank')">Curve Fever Pro</button>
+    <button onclick="window.open('https://play2048.co/', '_blank')">2048</button>
+    <button onclick="window.open('https://enzo974power.github.io/fg/', '_blank')">Espace de Enzo</button>
+    <button onclick="window.open('https://poxel.io/', '_blank')">Poxel.io</button>
+    <button onclick="window.open('https://shellshock.io/', '_blank')">Shell Shockers</button>
+    <button onclick="window.open('https://slopegame.io/geometry-dash/', '_blank')">Geometry Dash</button>
 </div>
 
 <script>
@@ -87,40 +75,27 @@ const motDePasse = "Tipitou974!";
 
 function verifierMDP() {
     const saisie = document.getElementById("mdpInput").value;
+
     if(saisie === motDePasse){
-        // Masquer login et afficher contenu
         document.getElementById("loginDiv").style.display = "none";
         document.getElementById("content").style.display = "block";
-
-        // 🔹 Charger le chat Tawk.to seulement après mot de passe correct
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/698f163385e35c1c3911e648/1jhbetes8';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-
     } else {
         alert("Mauvais mot de passe ! Le site est bloqué.");
         window.location.href = "https://www.google.com";
     }
 }
 
-// 🔹 Détecter Entrée pour l'image plein écran
+// Image plein écran avec Entrée
 document.addEventListener("keydown", function(event) {
     if(event.key === "Enter") {
         const contentDiv = document.getElementById("content");
-        // Image seulement si contenu visible
+
         if(contentDiv.style.display === "block" && !document.getElementById("fullImage")) {
             const img = document.createElement("img");
-            img.src = "surprise.png"; 
+            img.src = "surprise.png";
             img.id = "fullImage";
             img.alt = "Surprise !";
 
-            // Cliquer pour fermer l'image
             img.addEventListener("click", function(){ img.remove(); });
 
             document.body.appendChild(img);
