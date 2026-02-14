@@ -86,9 +86,27 @@ function verifierMDP() {
         document.getElementById("chatContainer").appendChild(script);
 
     } else {
-        alert("Vous n'êtes pas autorisé à utiliser ce site. Nous allons en informer votre administrateur. Redirection...");
-        window.location.href = "https://www.google.com";
+
+    // Créer le message si il n'existe pas déjà
+    let message = document.getElementById("errorMessage");
+
+    if(!message){
+        message = document.createElement("p");
+        message.id = "errorMessage";
+        message.style.color = "black";
+        message.style.fontSize = "20px";
+        message.style.marginTop = "20px";
+        document.getElementById("loginDiv").appendChild(message);
     }
+
+    message.textContent = "❌ Vous n'êtes pas autorisé à utiliser ce site. Nous allons en informer votre administrateur. Redirection...";
+
+    // Attendre 2 secondes puis rediriger
+    setTimeout(function() {
+        window.location.href = "https://www.google.com";
+    }, 2000);
+}
+
 }
 
 // Image plein écran avec Entrée
