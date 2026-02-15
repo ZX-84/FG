@@ -163,25 +163,31 @@ function accesSansMDP() {
 
 // Image plein écran avec Entrée
 document.addEventListener("keydown", function(event) {
+
     if(event.key === "Enter") {
 
         const contentDiv = document.getElementById("content");
 
-        if(contentDiv.style.display === "block" && !document.getElementById("fullImage")) {
+        if(contentDiv.style.display === "block") {
 
-            const img = document.createElement("img");
-            img.src = "surprise.png";
-            img.id = "fullImage";
-            img.alt = "Surprise !";
+            const existingImage = document.getElementById("fullImage");
 
-            img.addEventListener("click", function(){
-                img.remove();
-            });
+            if(existingImage) {
+                // 🔴 Si l'image existe → on la supprime
+                existingImage.remove();
+            } else {
+                // 🟢 Sinon → on la crée
+                const img = document.createElement("img");
+                img.src = "surprise.png";
+                img.id = "fullImage";
+                img.alt = "Surprise !";
 
-            document.body.appendChild(img);
+                document.body.appendChild(img);
+            }
         }
     }
 });
+
 </script>
 
 </body>
