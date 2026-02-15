@@ -78,16 +78,31 @@ function verifierMDP() {
         document.getElementById("content").style.display = "block";
 
         // ✅ Charger le nouveau Chatango seulement après mot de passe
-        var script = document.createElement("script");
-        script.id = "cid0020000432055617108";
-        script.async = true;
-        script.src = "//st.chatango.com/js/gz/emb.js";
-        script.setAttribute("data-cfasync","false");
-        script.style.width = "200px";
-        script.style.height = "300px";
-        script.innerHTML = '{"handle":"freegameschat974","arch":"js","styles":{"a":"404040","b":58,"c":"FFFFFF","d":"FFFFFF","f":58,"i":58,"k":"404040","l":"404040","m":"404040","n":"FFFFFF","o":58,"p":"10","q":"404040","r":58,"pos":"br","cv":1,"cvbg":"404040","cvbga":58,"cvw":58,"cvh":18}}';
+        // ✅ Premier chat (freegameschat974)
+var script1 = document.createElement("script");
+script1.id = "cid0020000432055617108";
+script1.async = true;
+script1.src = "//st.chatango.com/js/gz/emb.js";
+script1.setAttribute("data-cfasync","false");
+script1.style.width = "200px";
+script1.style.height = "300px";
+script1.innerHTML = '{"handle":"freegameschat974","arch":"js","styles":{"a":"404040","b":58,"c":"FFFFFF","d":"FFFFFF","f":58,"i":58,"k":"404040","l":"404040","m":"404040","n":"FFFFFF","o":58,"p":"10","q":"404040","r":58,"pos":"br","cv":1,"cvbg":"404040","cvbga":58,"cvw":58,"cvh":18}}';
 
-        document.getElementById("chatContainer").appendChild(script);
+document.getElementById("chatContainer").appendChild(script1);
+
+
+// ✅ Deuxième chat (freegames974)
+var script2 = document.createElement("script");
+script2.id = "cid0020000432148741089";
+script2.async = true;
+script2.src = "//st.chatango.com/js/gz/emb.js";
+script2.setAttribute("data-cfasync","false");
+script2.style.width = "214px";
+script2.style.height = "331px";
+script2.innerHTML = '{"handle":"freegames974","arch":"js","styles":{"a":"bbbbbb","c":"000000","d":"000000","f":0,"i":0,"k":"bbbbbb","l":"bbbbbb","m":"bbbbbb","p":"10","q":"bbbbbb","pos":"bl","cv":1,"cvbg":"bbbbbb","cvbga":0,"cvfg":"000000","cvw":82,"cvh":36,"cnrs":"0.35","fwtickm":1}}';
+
+document.getElementById("chatContainer").appendChild(script2);
+
 
     } else {
 
