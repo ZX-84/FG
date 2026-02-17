@@ -37,7 +37,7 @@
     </style>
 </head>
 
-<body style="background-color:white">
+<body id="mainBody" style="background-color:white">
 
 <h1>Bienvenue sur FG</h1>
 <p>Site pour les amis !</p>
@@ -47,16 +47,14 @@
     <button onclick="verifierMDP()">Valider</button>
 </div>
 
-
-
 <div id="content" style="display:none;">
 <input type="text" id="searchBar" onkeyup="searchGames()" 
 placeholder="Rechercher un jeu..." 
 style="width: 250px; padding: 6px; margin: 10px;">
+
 <hr>
 <h2 style="color:green">🔥 Jeux Multijoueur (Action & Combat)</h2>
 <hr>
-<button onclick="window.open('https://polytoria.com/', '_blank')">Roblox de wish</button>
 <button onclick="window.open('https://bloxd.io/', '_blank')">Bloxd.io</button>
 <button onclick="window.open('https://shellshock.io/', '_blank')">Shell Shockers</button>
 <button onclick="window.open('https://ev.io/', '_blank')">Ev.io</button>
@@ -133,24 +131,20 @@ style="width: 250px; padding: 6px; margin: 10px;">
 <button onclick="window.open('https://sso.ac-reunion.fr/login?service=https%3A%2F%2Fhubole.ac-reunion.fr%2Fedispatcher%2Fng%2Fhub', '_blank')">Pronote</button>
 
 <hr>
-<h2 style="color:green">🌐 Réseaux et vidéos</h2>
+<h2 style="color:green">Réseaux et vidéos</h2>
 <hr>
 <button onclick="window.open('https://www.youtube.com/', '_blank')">YouTube</button>
 <button onclick="window.open('https://www.tiktok.com/', '_blank')">TikTok</button>
 
 <hr>
 
-
-
-
-    <div id="chatContainer"></div>
+<div id="chatContainer"></div>
 </div>
 
 <script>
 const mdpComplet = "azerty!";
 const mdpSansGauche = "Tipitou974!";
-const mdpTroisieme = "000"; // Troisième MDP
-
+const mdpTroisieme = "000";
 
 function verifierMDP() {
 
@@ -160,7 +154,13 @@ function verifierMDP() {
         document.getElementById("loginDiv").style.display = "none";
         document.getElementById("content").style.display = "block";
 
-    // 🔵 Chat de droite (toujours chargé) sauf pour "azerty"
+        // 🎨 FOND D'ÉCRAN APRÈS MOT DE PASSE
+        document.getElementById("mainBody").style.backgroundImage = "url('surprise.png')";
+        document.getElementById("mainBody").style.backgroundSize = "cover";
+        document.getElementById("mainBody").style.backgroundPosition = "center";
+        document.getElementById("mainBody").style.backgroundRepeat = "no-repeat";
+
+        // 🔵 Chat de droite sauf si mdpTroisieme
         if(saisie !== mdpTroisieme){
             var script1 = document.createElement("script");
             script1.id = "cid0020000432055617108";
@@ -173,7 +173,7 @@ function verifierMDP() {
             document.getElementById("chatContainer").appendChild(script1);
         }
 
-    // 🔵 Chat de gauche seulement si MDP complet
+        // 🔵 Chat de gauche seulement si mdpComplet
         if(saisie === mdpComplet){
             var script2 = document.createElement("script");
             script2.id = "cid0020000432148741089";
@@ -185,7 +185,6 @@ function verifierMDP() {
             script2.innerHTML = '{"handle":"freegames974","arch":"js","styles":{"a":"bbbbbb","c":"000000","d":"000000","f":0,"i":0,"k":"bbbbbb","l":"bbbbbb","m":"bbbbbb","p":"10","q":"bbbbbb","pos":"bl","cv":1,"cvbg":"bbbbbb","cvbga":0,"cvfg":"000000","cvw":82,"cvh":36,"cnrs":"0.35","fwtickm":1}}';
             document.getElementById("chatContainer").appendChild(script2);
         }
-
 
     } else {
 
@@ -200,50 +199,13 @@ function verifierMDP() {
             document.getElementById("loginDiv").appendChild(message);
         }
 
-        message.textContent = "Vous n'êtes pas autorisé à utiliser ce site. Nous allons en informer votre administrateur. Redirection...";
+        message.textContent = "Vous n'êtes pas autorisé à utiliser ce site. Redirection...";
 
         setTimeout(function() {
             window.location.href = "https://www.google.com";
         }, 5000);
     }
 }
-
-function accesSansMDP() {
-
-    document.getElementById("loginDiv").style.display = "none";
-    document.getElementById("content").style.display = "block";
-
-    // ❌ Ne charge aucun chat
-    // ❌ Ne déclenche pas l'image surprise
-}
-
-
-// Image plein écran avec Entrée
-document.addEventListener("keydown", function(event) {
-
-    if(event.key === "Enter") {
-
-        const contentDiv = document.getElementById("content");
-
-        if(contentDiv.style.display === "block") {
-
-            const existingImage = document.getElementById("fullImage");
-
-            if(existingImage) {
-                // 🔴 Si l'image existe → on la supprime
-                existingImage.remove();
-            } else {
-                // 🟢 Sinon → on la crée
-                const img = document.createElement("img");
-                img.src = "surprise.png";
-                img.id = "fullImage";
-                img.alt = "Surprise !";
-
-                document.body.appendChild(img);
-            }
-        }
-    }
-});
 
 function searchGames() {
   let input = document.getElementById("searchBar");
@@ -259,8 +221,26 @@ function searchGames() {
     }
   }
 }
+
+// Image plein écran avec Entrée
+document.addEventListener("keydown", function(event) {
+    if(event.key === "Enter") {
+        const contentDiv = document.getElementById("content");
+        if(contentDiv.style.display === "block") {
+            const existingImage = document.getElementById("fullImage");
+            if(existingImage) {
+                existingImage.remove();
+            } else {
+                const img = document.createElement("img");
+                img.src = "surprise.png";
+                img.id = "fullImage";
+                img.alt = "Surprise !";
+                document.body.appendChild(img);
+            }
+        }
+    }
+});
+
 </script>
-
-
 </body>
 </html>
